@@ -18,7 +18,11 @@ struct Home: View {
                 
                 HStack(spacing: 15) {
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation(.easeIn){
+                            HomeModel.showMenu.toggle()
+                        }
+                    }, label: {
                         Image(systemName: "plus")
                             .font(.title)
                             .foregroundColor(Color.pink)
@@ -63,6 +67,24 @@ struct Home: View {
                 
                 Spacer()
             }
+            
+            // Side Menu
+            
+            HStack{
+                
+                Menu(homeData: HomeModel)
+                    .offset(x: HomeModel.showMenu ? 0 : -UIScreen.main.bounds.width / 1.6)
+                
+                Spacer(minLength: 0)
+            }
+            .background(Color.black.opacity(HomeModel.showMenu ? 0.3 : 0).ignoresSafeArea()
+            // Closing menu when taps on outside area
+                .onTapGesture(perform: {
+                withAnimation(.easeIn){
+                    HomeModel.showMenu.toggle()
+                }
+            })
+            )
             
             // Non closable alert if permission denied
             
