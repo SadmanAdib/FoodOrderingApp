@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 
 // Fetching User Location...
-class HomeViewModel:  NSObject,ObservableObject,CLLocationManagerDelegate{
+class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     
     @Published var search = ""
     @Published var locationManager = CLLocationManager()
@@ -22,7 +22,6 @@ class HomeViewModel:  NSObject,ObservableObject,CLLocationManagerDelegate{
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         
         //checking location access
-        
         switch manager.authorizationStatus {
         case .authorizedWhenInUse:
             print("authorized")
@@ -46,7 +45,6 @@ class HomeViewModel:  NSObject,ObservableObject,CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         //reading user location and updating details
-        
         self.userLocation = locations.last
         self.extractLocation()
     }
