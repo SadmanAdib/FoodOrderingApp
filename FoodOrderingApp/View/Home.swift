@@ -23,10 +23,10 @@ struct Home: View {
                         .foregroundColor(Color.pink)
                 })
                 
-                Text("Deliver To")
+                Text(HomeModel.userLocation == nil ? "Locating..." : "Deliver To")
                     .foregroundColor(.black)
                 
-                Text("Apple")
+                Text(HomeModel.userAddress)
                     .font(.caption)
                     .fontWeight(.heavy)
                     .foregroundColor(Color.pink)
@@ -62,6 +62,14 @@ struct Home: View {
             
             Spacer()
         }
+        .onAppear(perform: {
+            
+            //calling location delegate
+            HomeModel.locationManager.delegate = HomeModel
+            
+        })
+        
+        
         
     }
 }
