@@ -46,19 +46,13 @@ struct Home: View {
                 
                 HStack(spacing: 15) {
                     
+                    Image(systemName: "magnifyingglass")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                    
+                    
                     TextField("Search", text: $HomeModel.search)
                     
-                    if HomeModel.search != "" {
-                        Button(action: {}, label: {
-                            
-                            Image(systemName: "magnifyingglass")
-                                .font(.title2)
-                                .foregroundColor(.gray)
-                            
-                        })
-                        .animation(.easeIn, value: 0)
-                        
-                    }
                     
                 }
                 .padding(.horizontal)
@@ -68,7 +62,7 @@ struct Home: View {
                 
                 ScrollView(.vertical, showsIndicators: false, content:  {
                     VStack(spacing: 25){
-                        ForEach(HomeModel.items){item in
+                        ForEach(HomeModel.filtered){item in
                             
                             //Item view
                             ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
@@ -138,14 +132,32 @@ struct Home: View {
             
             }
         }
-        
-      
         .onAppear(perform: {
             
             //calling location delegate
             HomeModel.locationManager.delegate = HomeModel
             
         })
+        .onChange(of: HomeModel.search ) { value in
+            //to avoid continous search requests...
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                if value == HomeModel.search && HomeModel.search != ""{
+                    
+                    //search data...
+                    
+                    HomeModel.filterData()
+                }
+            }
+            
+            if HomeModel.search == ""{
+                //reset all data...
+                withAnimation(.linear){
+                    HomeModel.filtered = HomeModel.items
+                }
+            }
+            
+        }
+        
     
     }
 }
