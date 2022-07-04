@@ -31,6 +31,7 @@ struct Home: View {
                     Text(HomeModel.userLocation == nil ? "Locating..." : "Deliver To")
                         .foregroundColor(.black)
                     
+                    
                     Text(HomeModel.userAddress)
                         .font(.caption)
                         .fontWeight(.heavy)
