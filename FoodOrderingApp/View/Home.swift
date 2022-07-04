@@ -66,7 +66,17 @@ struct Home: View {
                 
                 Divider()
                 
-                Spacer()
+                ScrollView(.vertical, showsIndicators: false, content: {
+                    VStack(spacing: 25){
+                        ForEach(HomeModel.items){item in
+                            
+                            //Item view
+                            
+                            Text(item.item_name )
+                            
+                        }
+                    }
+                })
             }
             
             // Side Menu
