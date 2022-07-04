@@ -66,14 +66,39 @@ struct Home: View {
                 
                 Divider()
                 
-                ScrollView(.vertical, showsIndicators: false, content: {
+                ScrollView(.vertical, showsIndicators: false, content:  {
                     VStack(spacing: 25){
                         ForEach(HomeModel.items){item in
                             
                             //Item view
-                            
-                            ItemView(item: item)
-                                .frame(width: UIScreen.main.bounds.width - 30)
+                            ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
+                                
+                                ItemView(item: item)
+                                
+                                HStack{
+                                    
+                                    Text("Free Delivery!")
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal)
+                                        .background(.pink)
+                                    
+                                    Spacer(minLength: 0)
+                                    
+                                    Button(action: {}, label: {
+                                        Image(systemName: "plus")
+                                            .foregroundColor(.white)
+                                            .padding(10)
+                                            .background(.pink)
+                                            .clipShape(Circle())
+                                                            
+                                    })
+                                }
+                                .padding(.trailing, 10)
+                                .padding(.top, 10)
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 30)
+                                
                             
                             
                         }

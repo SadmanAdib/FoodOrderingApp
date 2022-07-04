@@ -18,7 +18,7 @@ struct ItemView: View {
             WebImage(url: URL(string: item.item_image))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(height: 250)
+                .frame(width: UIScreen.main.bounds.width - 30, height: 250)
             
             HStack(spacing: 8) {
                 Text(item.item_name)
