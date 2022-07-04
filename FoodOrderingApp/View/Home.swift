@@ -72,10 +72,13 @@ struct Home: View {
                             
                             //Item view
                             
-                            Text(item.item_name )
+                            ItemView(item: item)
+                                .frame(width: UIScreen.main.bounds.width - 30)
+                            
                             
                         }
                     }
+                    .padding(.top, 10)
                 })
             }
             
