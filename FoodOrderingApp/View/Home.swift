@@ -56,7 +56,7 @@ struct Home: View {
                     
                 }
                 .padding(.horizontal)
-               // .padding(.top,10)
+                // .padding(.top,10)
                 
                 Divider()
                 
@@ -79,20 +79,22 @@ struct Home: View {
                                     
                                     Spacer(minLength: 0)
                                     
-                                    Button(action: {}, label: {
-                                        Image(systemName: "plus")
+                                    Button(action: {
+                                        HomeModel.addToCart(item: item)
+                                    }, label: {
+                                        Image(systemName: item.isAdded ? "checkmark" : "plus")
                                             .foregroundColor(.white)
                                             .padding(10)
-                                            .background(.pink)
+                                            .background(item.isAdded ? .green : .pink)
                                             .clipShape(Circle())
-                                                            
+                                        
                                     })
                                 }
                                 .padding(.trailing, 10)
                                 .padding(.top, 10)
                             })
                             .frame(width: UIScreen.main.bounds.width - 30)
-                                
+                            
                             
                             
                         }
@@ -101,26 +103,23 @@ struct Home: View {
                 })
             }
             
-            // Side Menu
-            
+            // Side Menu...
             HStack{
-                
                 Menu(homeData: HomeModel)
                     .offset(x: HomeModel.showMenu ? 0 : -UIScreen.main.bounds.width / 1.6)
                 
                 Spacer(minLength: 0)
             }
             .background(Color.black.opacity(HomeModel.showMenu ? 0.3 : 0).ignoresSafeArea()
-            // Closing menu when taps on outside area
+                        // Closing menu when taps on outside area
                 .onTapGesture(perform: {
-                withAnimation(.easeIn){
-                    HomeModel.showMenu.toggle()
-                }
-            })
+                    withAnimation(.easeIn){
+                        HomeModel.showMenu.toggle()
+                    }
+                })
             )
             
             // Non closable alert if permission denied
-            
             if HomeModel.noLocation{
                 Text("Please enable location in settings to continue...")
                     .foregroundColor(.black)
@@ -129,7 +128,7 @@ struct Home: View {
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.black.opacity(0.3).ignoresSafeArea())
-            
+                
             }
         }
         .onAppear(perform: {
@@ -146,7 +145,7 @@ struct Home: View {
                     //search data...
                     
                     HomeModel.filterData()
-                }
+                } 
             }
             
             if HomeModel.search == ""{
@@ -158,7 +157,7 @@ struct Home: View {
             
         }
         
-    
+        
     }
 }
 

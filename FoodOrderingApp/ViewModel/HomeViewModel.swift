@@ -8,6 +8,8 @@
 import SwiftUI
 import CoreLocation
 import Firebase
+import SDWebImageSwiftUI
+import XCTest
 
 // Fetching User Location...
 class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
@@ -26,6 +28,9 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     //ItemData...
     @Published var items: [Item] = []
     @Published var filtered: [Item] = []
+    
+    //Cart Data...
+    @Published var cartItems: [Cart] = []
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         
@@ -55,7 +60,7 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         //reading user location and updating details
         self.userLocation = locations.last
         self.extractLocation()
-        //after extracting location loggin in...
+        //after extracting location, logging in...
         self.login()
     }
     
@@ -68,7 +73,6 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
             var address = ""
             
             // getting area and locality name
-            
             address += safeData.first?.name ?? ""
             address += ", "
             address += safeData.first?.locality ?? ""
@@ -132,6 +136,35 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
                 return $0.item_name.lowercased().contains(self.search.lowercased())
             }
         }
+    }
+    
+    //add to cart function
+    func addToCart(item: Item){
+        
+        //checking whether it is added
+        self.items[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        
+        //updating filtered array also for search bar results...
+        self.filtered[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        
+        if item.isAdded {
+            //removing from list
+            self.cartItems.remove(at: getIndex(item: item, isCartIndex: true))
+            return
+        }
+        //else adding
+        self.cartItems.append(Cart(item: item, quantity: 1))
+    }
+    
+    func getIndex(item: Item, isCartIndex: Bool) -> Int{
+        let index = self.items.firstIndex{ (item1) -> Bool in
+            return item.id == item1.id
+        } ?? 0
+        
+        let cartIndex = self.cartItems.firstIndex{ (item1) -> Bool in
+            return item.id == item1.item.id
+        } ?? 0
+        return isCartIndex ? cartIndex : index
     }
     
 }

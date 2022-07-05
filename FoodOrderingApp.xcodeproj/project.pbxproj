@@ -21,6 +21,7 @@
 		32BFAC092872AF2100F1D40F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC082872AF2100F1D40F /* Item.swift */; };
 		32BFAC0B2872B48F00F1D40F /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC0A2872B48F00F1D40F /* ItemView.swift */; };
 		32BFAC0E2872B64B00F1D40F /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 32BFAC0D2872B64B00F1D40F /* SDWebImageSwiftUI */; };
+		32BFAC102874294C00F1D40F /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC0F2874294C00F1D40F /* Cart.swift */; };
 		935ED3B488FF24488F40511D /* Pods_FoodOrderingApp_FoodOrderingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A32E33010ECDD07C3BF60B1 /* Pods_FoodOrderingApp_FoodOrderingAppUITests.framework */; };
 		A30B9FEC6EBA8CF6CAF7BD14 /* Pods_FoodOrderingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AA4A9A4CEC0FD40070F476 /* Pods_FoodOrderingAppTests.framework */; };
 		D9244FD7E4550FDB5E3FE59D /* Pods_FoodOrderingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C37D5CCC4D53A099F748DFC /* Pods_FoodOrderingApp.framework */; };
@@ -62,6 +63,7 @@
 		32552F19286DB0E800194472 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32BFAC082872AF2100F1D40F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		32BFAC0A2872B48F00F1D40F /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		32BFAC0F2874294C00F1D40F /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		37D39DAF0FEBB5F790822F4B /* Pods-FoodOrderingApp-FoodOrderingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp-FoodOrderingAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp-FoodOrderingAppUITests/Pods-FoodOrderingApp-FoodOrderingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58777018ECC49F015A346FDB /* Pods-FoodOrderingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp.release.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp/Pods-FoodOrderingApp.release.xcconfig"; sourceTree = "<group>"; };
 		6E12B34EC7B150D4CC309E0E /* Pods-FoodOrderingApp-FoodOrderingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp-FoodOrderingAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp-FoodOrderingAppUITests/Pods-FoodOrderingApp-FoodOrderingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				32BFAC082872AF2100F1D40F /* Item.swift */,
+				32BFAC0F2874294C00F1D40F /* Cart.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				32BFAC0B2872B48F00F1D40F /* ItemView.swift in Sources */,
 				32BFAC092872AF2100F1D40F /* Item.swift in Sources */,
 				32552F18286D9DEE00194472 /* Menu.swift in Sources */,
+				32BFAC102874294C00F1D40F /* Cart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +627,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodOrderingApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please Allow To Read Location For Delivery";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -654,6 +659,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FoodOrderingApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please Allow To Read Location For Delivery";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
