@@ -127,11 +127,11 @@ struct CartView: View {
                 }
                 .padding([.top, .horizontal])
                 
-                Button(action: {}){
+                Button(action: {homeData.updateOrder()}){
                     
-                    Text("Check Out")
+                    Text(homeData.ordered ? "Cancel Order": "Check Out")
                         .font(.title2)
-                        .fontWeight(.heavy)
+                        .fontWeight(.heavy) 
                         .foregroundColor(.white)
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 30)

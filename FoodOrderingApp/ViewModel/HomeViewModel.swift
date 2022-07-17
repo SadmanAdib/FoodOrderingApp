@@ -31,6 +31,7 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
     
     //Cart Data...
     @Published var cartItems: [Cart] = []
+    @Published var ordered = false
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         
@@ -184,6 +185,54 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         format.numberStyle = .currency
         
         return format.string(from: NSNumber(value: value)) ?? ""
+        
+    }
+    
+    //writing order data into firebase
+    func updateOrder(){
+        
+        let db = Firestore.firestore()
+        
+        //creating dict of food details
+        
+        if ordered{
+            ordered = false
+            
+            db.collection("Users").document(Auth.auth().currentUser!.uid).delete{
+                (err) in
+                if err != nil{
+                    self.ordered = true
+                }
+            }
+        }
+        
+        var details : [[String: Any]] = [[:]]
+        
+        cartItems.forEach(){ (cart) in
+            
+            details.append([
+                "item_name": cart.item.item_name,
+                "item_quantity": cart.quantity,
+                "item_cost": cart.item.item_cost
+            ])
+            
+        }
+        
+        ordered = true
+        
+        db.collection("Users").document(Auth.auth().currentUser!.uid).setData([
+            
+            "ordered_food": details,
+            "total_cost": calculateTotalPrice(),
+            "location": GeoPoint(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+            
+        ]) { (err) in
+            if err != nil{
+                self.ordered = false
+                return
+            }
+            print("Success!")
+        }
         
     }
 }
