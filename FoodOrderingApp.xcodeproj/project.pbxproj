@@ -22,6 +22,7 @@
 		32BFAC0B2872B48F00F1D40F /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC0A2872B48F00F1D40F /* ItemView.swift */; };
 		32BFAC0E2872B64B00F1D40F /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 32BFAC0D2872B64B00F1D40F /* SDWebImageSwiftUI */; };
 		32BFAC102874294C00F1D40F /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC0F2874294C00F1D40F /* Cart.swift */; };
+		32BFAC122874358D00F1D40F /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFAC112874358D00F1D40F /* CartView.swift */; };
 		935ED3B488FF24488F40511D /* Pods_FoodOrderingApp_FoodOrderingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A32E33010ECDD07C3BF60B1 /* Pods_FoodOrderingApp_FoodOrderingAppUITests.framework */; };
 		A30B9FEC6EBA8CF6CAF7BD14 /* Pods_FoodOrderingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AA4A9A4CEC0FD40070F476 /* Pods_FoodOrderingAppTests.framework */; };
 		D9244FD7E4550FDB5E3FE59D /* Pods_FoodOrderingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C37D5CCC4D53A099F748DFC /* Pods_FoodOrderingApp.framework */; };
@@ -64,6 +65,7 @@
 		32BFAC082872AF2100F1D40F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		32BFAC0A2872B48F00F1D40F /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		32BFAC0F2874294C00F1D40F /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		32BFAC112874358D00F1D40F /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		37D39DAF0FEBB5F790822F4B /* Pods-FoodOrderingApp-FoodOrderingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp-FoodOrderingAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp-FoodOrderingAppUITests/Pods-FoodOrderingApp-FoodOrderingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58777018ECC49F015A346FDB /* Pods-FoodOrderingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp.release.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp/Pods-FoodOrderingApp.release.xcconfig"; sourceTree = "<group>"; };
 		6E12B34EC7B150D4CC309E0E /* Pods-FoodOrderingApp-FoodOrderingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp-FoodOrderingAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp-FoodOrderingAppUITests/Pods-FoodOrderingApp-FoodOrderingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				32552F13286D68C200194472 /* Home.swift */,
 				32552F17286D9DEE00194472 /* Menu.swift */,
 				32BFAC0A2872B48F00F1D40F /* ItemView.swift */,
+				32BFAC112874358D00F1D40F /* CartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32BFAC122874358D00F1D40F /* CartView.swift in Sources */,
 				32552EE9286D685700194472 /* ContentView.swift in Sources */,
 				32552F14286D68C200194472 /* Home.swift in Sources */,
 				32552EE7286D685700194472 /* FoodOrderingAppApp.swift in Sources */,
