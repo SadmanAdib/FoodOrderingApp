@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CartView: View {
     @ObservedObject var homeData: HomeViewModel
@@ -34,9 +35,72 @@ struct CartView: View {
                 
                 LazyVStack(spacing: 0){
                     
-                    ForEach(homeData.cartItems){ item in
+                    ForEach(homeData.cartItems){ cart in
                         
-                        Text(item.item.item_name)
+                        // Cart ItemView
+                        HStack(spacing: 15){
+                            WebImage(url: URL(string:  cart.item.item_image))
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 130, height: 130)
+                                .cornerRadius(15)
+                            
+                            VStack(alignment: .leading, spacing: 10){
+                                
+                                Text(cart.item.item_name)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.black)
+                                
+                                Text(cart.item.item_details)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(2)
+                                
+                                HStack(spacing: 15){
+                                    Text(homeData.getPrice(value: Float(truncating: cart.item.item_cost)))
+                                        .font(.title2)
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(.black)
+                                    
+                                    Spacer(minLength: 0)
+                                    
+                                    //Add-Sub button
+                                    
+                                    Button(action: {
+                                        if cart.quantity > 1{
+                                            homeData.cartItems[homeData.getIndex(item: cart.item, isCartIndex: true)].quantity -= 1
+                                        }
+                                    }){
+                                        
+                                        Image(systemName: "minus")
+                                            .font(.system(size: 16, weight: .heavy))
+                                            .foregroundColor(.black)
+                                        
+                                    }
+                                    
+                                    Text("\(cart.quantity)")
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(.black)
+                                        .padding(.vertical, 5)
+                                        .padding(.horizontal, 10)
+                                        .background(.black.opacity(0.06))
+                                    
+                                    Button(action: {
+                                        homeData.cartItems[homeData.getIndex(item: cart.item, isCartIndex: true)].quantity += 1
+                                        
+                                    }){
+                                        
+                                        Image(systemName: "plus")
+                                            .font(.system(size: 16, weight: .heavy))
+                                            .foregroundColor(.black)
+                                        
+                                    }
+                                    
+                                }
+                                
+                            }
+                        }
+                        .padding()
                         
                     }
                     
@@ -72,7 +136,8 @@ struct CartView: View {
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 30)
                         .background(
-                            LinearGradient(gradient: .init(colors: [Color.red, Color.blue]), startPoint: .leading, endPoint: .trailing)
+//                            LinearGradient(gradient: .init(colors: [Color.red, Color.blue]), startPoint: .leading, endPoint: .trailing)
+                            Color.pink
                         )
                         .cornerRadius(15)
                 }
