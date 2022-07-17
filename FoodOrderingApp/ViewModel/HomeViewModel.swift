@@ -146,7 +146,10 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
         self.items[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
         
         //updating filtered array also for search bar results...
-        self.filtered[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        let filterIndex = self.filtered.firstIndex{ (item1) -> Bool in
+            return item.id == item1.id
+        } ?? 0
+        self.filtered[filterIndex].isAdded = !item.isAdded
         
         if item.isAdded {
             //removing from list
@@ -204,9 +207,10 @@ class HomeViewModel: NSObject,ObservableObject,CLLocationManagerDelegate{
                     self.ordered = true
                 }
             }
+            return
         }
         
-        var details : [[String: Any]] = [[:]]
+        var details : [[String: Any]] = []
         
         cartItems.forEach(){ (cart) in
             

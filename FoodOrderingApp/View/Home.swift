@@ -60,47 +60,58 @@ struct Home: View {
                 
                 Divider()
                 
-                ScrollView(.vertical, showsIndicators: false, content:  {
-                    VStack(spacing: 25){
-                        ForEach(HomeModel.filtered){item in
-                            
-                            //Item view
-                            ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
+                if HomeModel.items.isEmpty{
+                    
+                    Spacer()
+                    
+                    ProgressView()
+                    
+                    Spacer()
+                    
+                }
+                else{
+                    ScrollView(.vertical, showsIndicators: false, content:  {
+                        VStack(spacing: 25){
+                            ForEach(HomeModel.filtered){item in
                                 
-                                ItemView(item: item)
-                                
-                                HStack{
+                                //Item view
+                                ZStack(alignment: Alignment(horizontal: .center, vertical: .top), content: {
                                     
-                                    Text("Free Delivery!")
-                                        .foregroundColor(.white)
-                                        .padding(.vertical, 10)
-                                        .padding(.horizontal)
-                                        .background(.pink)
+                                    ItemView(item: item)
                                     
-                                    Spacer(minLength: 0)
-                                    
-                                    Button(action: {
-                                        HomeModel.addToCart(item: item)
-                                    }, label: {
-                                        Image(systemName: item.isAdded ? "checkmark" : "plus")
-                                            .foregroundColor(.white)
-                                            .padding(10)
-                                            .background(item.isAdded ? .green : .pink)
-                                            .clipShape(Circle())
+                                    HStack{
                                         
-                                    })
-                                }
-                                .padding(.trailing, 10)
-                                .padding(.top, 10)
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 30)
-                            
-                            
-                            
+                                        Text("Free Delivery!")
+                                            .foregroundColor(.white)
+                                            .padding(.vertical, 10)
+                                            .padding(.horizontal)
+                                            .background(.pink)
+                                        
+                                        Spacer(minLength: 0)
+                                        
+                                        Button(action: {
+                                            HomeModel.addToCart(item: item)
+                                        }, label: {
+                                            Image(systemName: item.isAdded ? "checkmark" : "plus")
+                                                .foregroundColor(.white)
+                                                .padding(10)
+                                                .background(item.isAdded ? .green : .pink)
+                                                .clipShape(Circle())
+                                            
+                                        })
+                                    }
+                                    .padding(.trailing, 10)
+                                    .padding(.top, 10)
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 30)
+                                
+                                
+                                
+                            }
                         }
-                    }
-                    .padding(.top, 10)
-                })
+                        .padding(.top, 10)
+                    })
+                }
             }
             
             // Side Menu...

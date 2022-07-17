@@ -101,6 +101,22 @@ struct CartView: View {
                             }
                         }
                         .padding()
+                        .contextMenu{
+                            //for deleting order
+                            Button(action: {
+                                //deleting items
+                                let index = homeData.getIndex(item: cart.item, isCartIndex: true)
+                                let itemIndex = homeData.getIndex(item: cart.item, isCartIndex: false)
+                                
+                                homeData.items[itemIndex].isAdded = false
+                                homeData.filtered[itemIndex].isAdded = false
+                                
+                                homeData.cartItems.remove(at: index)
+                                
+                            }){
+                                Text("Remove")
+                            }
+                        }
                         
                     }
                     
